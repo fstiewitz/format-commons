@@ -9,6 +9,9 @@ target_include_directories(format_commons_audio_x_midi INTERFACE ${CMAKE_CURRENT
 add_executable(format_commons_audio_x_midi_test test/main.cpp)
 target_link_libraries(format_commons_audio_x_midi_test PUBLIC format_commons_audio_x_midi)
 
+add_executable(format_x_midi_log main.cpp)
+target_link_libraries(format_x_midi_log PUBLIC format_commons_audio_x_midi)
+
 install(DIRECTORY
         ${CMAKE_CURRENT_SOURCE_DIR}/include/format-commons
         DESTINATION include)
