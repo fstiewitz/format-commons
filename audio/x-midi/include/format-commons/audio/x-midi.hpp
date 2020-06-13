@@ -1,8 +1,23 @@
+/*
+ * Copyright 2020 Fabian Stiewitz <fabian@stiewitz.pw>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
 #ifndef FORMAT_COMMONS_AUDIO_X_MIDI_HPP
 #define FORMAT_COMMONS_AUDIO_X_MIDI_HPP
 
 #include <format.hpp>
-#include <utility>
 
 namespace format::audio::x_midi {
 
