@@ -531,7 +531,11 @@ namespace format::audio::x_midi {
     };
 
     struct controller_state {
-        uint16_t states[128];
+        uint16_t states[128] {};
+
+        controller_state() {
+            memset(states, 0, 128);
+        }
 
         [[nodiscard]] uint16_t get(uint8_t message_type) const {
             if (message_type >= 32u && message_type <= 63u) return states[message_type - 32u];
@@ -540,9 +544,11 @@ namespace format::audio::x_midi {
 
         void apply(uint8_t message_type, uint8_t value) {
             if (message_type <= 31u) {
-                states[message_type] = states[message_type] & 0xFFu | value << 8u;
+                states[message_type] = (states[message_type] & 0xFFu) | value << 8u;
             } else if (message_type <= 63u) {
-                states[message_type - 32u] = states[message_type - 32u] & 0xFF00u | value;
+                states[message_type - 32u] = (states[message_type - 32u] & 0xFF00u) | value;
+                controller_changed(static_cast<controller_t>(message_type), states[message_type - 32u]);
+                return;
             } else if (message_type <= 69u) {
                 states[message_type] = value >= 64u;
             } else if (message_type == 122) {
@@ -550,6 +556,10 @@ namespace format::audio::x_midi {
             } else {
                 states[message_type] = value;
             }
+            controller_changed(static_cast<controller_t>(message_type), states[message_type]);
+        }
+
+        virtual void controller_changed(controller_t controller, uint16_t value) {
         }
     };
 
