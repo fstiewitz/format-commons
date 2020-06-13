@@ -111,6 +111,12 @@ int main() {
                     case END_OF_EXCLUSIVE:
                         printf("end of exclusive\n");
                         break;
+                    case TIMING_CLOCK:
+                        printf("timing clock\n");
+                        break;
+                    case START:
+                        printf("start\n");
+                        break;
                     case CONTINUE:
                         printf("continue\n");
                         break;

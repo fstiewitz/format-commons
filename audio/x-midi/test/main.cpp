@@ -99,7 +99,7 @@ int main(int argc, char** argv) {
 
         assert(sd.str() == fd.str());
     }
-    TEST("Voice Change (pre-recorded from own piano)");
+    TEST("Voice Change (recorded from own piano)");
     {
         midi_message_t message;
         std::stringbuf fd;
